@@ -12,11 +12,19 @@ class App extends Component {
       ],
     };
   }
+  deleteTodo = (id) => {
+    const newList = this.state.todos.filter((todo) => todo.id !== id);
+
+    this.setState({
+      todos: newList,
+    });
+  };
   //add a component did mount to fetch to the database
   render() {
     return (
       <div>
-        <Todos />
+        <h1>Todos</h1>
+        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
       </div>
     );
   }
